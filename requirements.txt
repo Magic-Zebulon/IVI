@@ -1,0 +1,9 @@
+lxml
+pandas
+requests==2.31.0
+selenium==4.15.2
+sentence_transformers==2.2.2
+bertopic
+--no-binary pysqlite3 pysqlite3
+regex
+datetime

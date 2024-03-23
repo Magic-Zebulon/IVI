@@ -1,0 +1,30 @@
+{
+    "ip": "45.128.133.228",
+    "programm": {
+        "software": "Python",
+        "software_version": "3.11.4",
+        "modules": [
+            "selenium",
+            "lxml",
+            "requests",
+            "pandas",
+            "pipreqs"
+        ]
+    },
+    "system": {
+        "os_name": "Linux",
+        "computer_name": "tlosint",
+        "os_release": "6.4.0-kali3-amd64",
+        "os_version": "#1 SMP PREEMPT_DYNAMIC Debian 6.4.11-1kali1 (2023-08-21)",
+        "processor": ""
+    },
+    "info": {
+        "date": "2023-12-02T11:10:32.181390+00:00",
+        "url_requested": "https://ahmia.fi/search/?q=organs&d=7",
+        "url_responsed": "about:blank",
+        "proxies": {
+            "http": null,
+            "https": null
+        }
+    }
+}

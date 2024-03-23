@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=edge" />
+    <link rel="stylesheet" href="/static/css/lib/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/css/lib/Chart.min.css" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <script defer src="/static/js/lib/jquery.min.js"></script>
+    <script defer src="/static/js/lib/popper.min.js"></script>
+    <script defer src="/static/js/lib/bootstrap.min.js"></script>
+    <script defer src="/static/js/lib/lazysizes.min.js"></script>
+    <script defer src="/static/js/lib/Chart.min.js"></script>
+    <script defer src="/static/js/lib/unfetch.js"></script>
+    <script defer src="/static/js/lib/es6-promise.auto.min.js"></script>
+    <script defer src="/static/js/lib/FileSaver.min.js"></script>
+    <script defer src="/static/js/scripts.js"></script>
+    <title>Verfassungsschutzberichte.de</title>
+    <meta
+      property="og:url"
+      content="https://verfassungsschutzberichte.de/?"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@vsberichte" />
+    <!-- favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/static/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/static/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/static/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/static/site.webmanifest" />
+    <link rel="shortcut icon" href="/static/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="/static/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+<meta property="og:title" content="Verfassungsschutzberichte.de">
+<meta name="description"
+  content="Online-Archiv für Verfassungsschutzberichte. Über was informiert der Verfassungs­schutz? Die Berichte des Geheimdienstes: gesammelt, durchsuchbar und analysiert.">
+<meta property="og:image" content="https://verfassungsschutzberichte.de/static/thumbnail.jpg">
+  </head>
+
+  <body>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/"><span class="d-none d-sm-inline">Verfassungsschutz&shy;berichte.de</span><span
+        class="d-block d-sm-none very-small-mobile">Verfassungsschutzberichte.de</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/berichte">Berichte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/suche">Suche</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+          Analyse
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/trends">Trends</a>
+            <a class="dropdown-item" href="/regional">Regional</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#ueber">Über</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="//blog.vsberichte.de">Blog</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" method="GET" action="/suche">
+        <input class="form-control mr-sm-2" type="search" placeholder="In allen Berichten suchen" aria-label="Search"
+          name="q">
+        <button class="btn my-2 my-sm-0 btn-primary" type="submit">Suchen</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+    <div class="container">
+
+
+<div style="padding-top: 54px;"></div>
+<div class="row my-md-5 my-3">
+  <div class="col-lg-6">
+    <h1 class="mb-md-5 mb-3">Über was informiert der Verfassungs&shy;schutz?<br><small>Die Berichte des Geheimdienstes:
+        gesammelt, durchsuchbar und analysiert.</small>
+    </h1>
+
+    <div id='chart1-mobile' class="mb-3 d-md-none">
+
+    </div>
+
+    <p>Der <b>Verfassungsschutz</b> hat die Aufgabe die <b>Öffentlichkeit</b> über
+      verfassungsfeindliche Bestrebungen <b>aufzuklären</b>.
+      <br><br>
+      Die 16 Landesämter und das Bundesamt für Verfassungsschutz veröffentlichen <b>jährlich
+        Verfassungsschutzberichte</b>.
+      <br><br>
+      Diese Webseite ist ein zivilgesellschaftliches Archiv, das den <b>Zugang</b> zu den Berichten <b>erleichert</b>.
+
+      <!-- Auf dieser Webseite
+      werden
+      die Berichte erstmals <b>gesammelt</b>, <b>ausgewertet</b> und können <b>durchsucht</b> werden. -->
+    </p>
+    <div class="text-center text-md-left">
+      <a class="btn btn-primary mt-3" href="/trends?q=linksextrem&q=rechtsextrem" role="button">Trend: z. B.
+        links- vs rechtsextrem</a>
+      <a class="btn btn-primary mt-3" href='/suche?q="NSU"' role="button">oder Suche "NSU"</a>
+    </div>
+  </div>
+
+  <div id='chart1' class="push-down col-lg-6 mt-5 mt-lg-0 d-none d-md-block">
+
+  </div>
+</div>
+
+
+<div class="row my-5">
+  <div id='chart2' class="push-down col-lg-6">
+
+  </div>
+  <div id='chart3' class="push-down col-lg-6">
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-8">
+    <h2>604 Verfassungs&shy;schutz&shy;berichte</h2>
+    <p>Wir sammeln die PDFs der Berichte und stellen sie dem Web entsprechend dar. Hier sind nur
+      die 54
+      Berichte des Bundesamtes für Verfassungsschutz (BfV) aufgeführt. <a href='/berichte'>Übersicht über alle Berichte.</a></p>
+    <a id="bund" class="anchor"></a>
+    <h5 class="mt-5">Berichte des BfV</h5>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2022">2022 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2021">2021 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2020">2020 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2019">2019 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2018">2018 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2017">2017 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2016">2016 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2015">2015 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2014">2014 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2013">2013 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2012">2012 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2011">2011 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2010">2010 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2009">2009 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2008">2008 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2007">2007 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2006">2006 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2005">2005 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2004">2004 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2003">2003 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2002">2002 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2001">2001 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/2000">2000 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1999">1999 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1998">1998 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1997">1997 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1996">1996 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1995">1995 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1994">1994 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1993">1993 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1992">1992 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1991">1991 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1990">1990 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1989">1989 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1988">1988 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1987">1987 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1986">1986 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1985">1985 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1984">1984 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1983">1983 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1982">1982 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1981">1981 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1980">1980 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1979">1979 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1978">1978 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1977">1977 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1976">1976 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1975">1975 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1974">1974 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1973">1973 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1972">1972 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1971">1971 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1970">1970 </a>
+    <a class="mr-1" style="font-family: monospace;" href="bund/1968">1968 </a>
+    <h3 class="mt-5">Verfassungsschutz Trends</h3>
+    <p>Durch die digitale Archivierung können Erwähnung im zeitlichen Verlauf betrachten werden: Wir präsentieren die <a
+        href="/trends">Verfassungsschutz Trends</a>. Hier auf der Seite sind nur einige Beispiele. Die Nutzer:innen sind eingeladen
+      durch eigene Begriffe interessante Grafiken zu kreieren und über Social Media zu verbreiten.</p>
+    <div id="chart4" class="mt-3"></div>
+  </div>
+  <div class="col-lg-4 mt-5 mt-lg-0" style='align-content: center;justify-content: center;display: flex;'>
+    <table class="table table-sm">
+      <tr>
+        <th scope="col">Land</th>
+        <th scope="col" class="text-right"># Berichte</th>
+      </tr>
+    </thead>
+      <tbody>
+          <tr>
+            <td><small><a href="/berichte#baden-w%C3%BCrttemberg">Baden-Württemberg</a></small></td>
+            <td class="text-right"><small>48</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#bayern">Bayern</a></small></td>
+            <td class="text-right"><small>47</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#berlin">Berlin</a></small></td>
+            <td class="text-right"><small>32</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#brandenburg">Brandenburg</a></small></td>
+            <td class="text-right"><small>30</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#bremen">Bremen</a></small></td>
+            <td class="text-right"><small>21</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#hamburg">Hamburg</a></small></td>
+            <td class="text-right"><small>30</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#hessen">Hessen</a></small></td>
+            <td class="text-right"><small>36</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#mecklenburg-vorpommern">Mecklenburg-Vorpommern</a></small></td>
+            <td class="text-right"><small>30</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#niedersachsen">Niedersachsen</a></small></td>
+            <td class="text-right"><small>39</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#nordrhein-westfalen">Nordrhein-Westfalen</a></small></td>
+            <td class="text-right"><small>59</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#rheinland-pfalz">Rheinland-Pfalz</a></small></td>
+            <td class="text-right"><small>39</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#saarland">Saarland</a></small></td>
+            <td class="text-right"><small>9</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#sachsen">Sachsen</a></small></td>
+            <td class="text-right"><small>29</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#sachsen-anhalt">Sachsen-Anhalt</a></small></td>
+            <td class="text-right"><small>31</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#schleswig-holstein">Schleswig-Holstein</a></small></td>
+            <td class="text-right"><small>41</small></td>
+          </tr>
+          <tr>
+            <td><small><a href="/berichte#th%C3%BCringen">Thüringen</a></small></td>
+            <td class="text-right"><small>29</small></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  Promise.all(['/stats?q=raf', '/stats?q=nsu'].map(function (u) { return fetch(u) })).then(function (responses) {
+    return Promise.all(responses.map(function (res) { return res.json() }))
+  }
+  ).then(function (data) {
+    if (document.documentElement.clientWidth < 576) {
+      window.drawLineChart(data, 'chart1-mobile', 400, 'rel. Häufigkeit', title = 'Erwähnungen von RAF und NSU', indexPage = true)
+    } else {
+      window.drawLineChart(data, 'chart1', 400, 'rel. Häufigkeit', title = 'Erwähnungen von RAF und NSU', indexPage = true)
+    }
+  })
+
+  Promise.all(['/stats?q=npd', '/stats?q=pkk', '/stats?q=dkp'].map(function (u) { return fetch(u) })).then(function (responses) {
+    return Promise.all(responses.map(function (res) { return res.json() }))
+  }
+  ).then(function (data) {
+    window.drawLineChart(data, 'chart2', 300, 'rel. Häufigkeit', title = 'Erwähnungen von Parteien', indexPage = true)
+  })
+
+  Promise.all(['/stats?q=internet', '/stats?q=facebook', '/stats?q=zeitung'].map(function (u) { return fetch(u) })).then(function (responses) {
+    return Promise.all(responses.map(function (res) { return res.json() }))
+  }
+  ).then(function (data) {
+    window.drawLineChart(data, 'chart3', 300, 'rel. Häufigkeit', title = 'Erwähnungen von Medien', indexPage = true)
+  })
+
+  Promise.all(['/stats?q=cyber'].map(function (u) { return fetch(u) })).then(function (responses) {
+    return Promise.all(responses.map(function (res) { return res.json() }))
+  }
+  ).then(function (data) {
+    window.drawLineChart(data, 'chart4', 200, 'rel. Häufigkeit', title = 'Erwähnung von Cyber', indexPage = true)
+  })
+
+</script>
+
+<hr>
+<div class="row mt-3">
+  <div class="col-lg-8 offset-lg-2">
+    <!-- <a id='mitmachen' class="anchor"></a>
+    <h2 class="mt-5">Mach mit!</h2>
+    Du bist im Besitz oder hast Zugang zu Berichten, die noch fehlen? Bitte nimm <a href="/#scannen">Kontakt</a>
+    zu
+    uns auf. Ziel ist es alle Berichte des Verfassungsschutzes zu sammeln – von seiner Entstehung bis zu seiner
+    Auflösung.
+    <div class="row mt-5">
+      <div class="col-6 offset-3 col-lg-4 offset-lg-4">
+        <img src='/static/detectives.jpg' class="img-fluid" alt="🕵️‍♀️🕵️‍♂️" />
+      </div>
+    </div> -->
+
+    <a id='ueber' class="anchor"></a>
+    <h2 class="mt-5">Über uns</h2>
+
+    <div>
+      Wir sammeln alle Berichte des Verfassungsschutzes und erleichtern den Zugang zu ihnen. Dieses Archiv soll
+      Wissenschaftler:innen, Journalist:innen, Aktivist:innen und allen interessierten Bürger:innen in ihrer Recherche
+      unterstützen.
+      Zwar werden mittlerweile alle
+      Berichte
+      auch online veröffentlicht, jedoch werden diese regelmäßig depubliziert <small>(aus dem Internet
+        gelöscht)</small>. Die Berichte sind dann nur noch (analog)
+      in
+      Bibliotheken
+      zu haben.
+      Sie sind damit rechtlich gesehen öffentlich verfügbar.
+      Deswegen können sie nicht per <a
+        href="https://fragdenstaat.de/info/informationsfreiheit/einfuehrung/">Informationsfreiheitsgesetz</a> angefragt
+      werden.
+      Ein Bibliotheksbesuch ist aber mit Hürden verbunden und damit ist der Zugang nicht mehr zeitgemäß.
+      Mit dieser Plattform lässt sich in Erfahrung bringen,
+      wen oder was der deutsche Inlandsgeheimdienst beobachtet und wie er arbeitet. <br><br>
+      Berichtserstattung & Pressemitteilungen:
+      <ul>
+        <li>Spiegel Online: <a
+            href="https://www.spiegel.de/netzwelt/web/netzaktivist-startet-online-archiv-fuer-verfassungsschutzberichte-a-1294435.html">„Netzaktivist
+            startet Archiv für Verfassungsschutzberichte“</a></li>
+        <li>Netzpolitik.org: <a href="https://netzpolitik.org/2019/wo-der-verfassungsschutz-hinschaut/">„Wo der
+            Verfassungsschutz hinschaut“</a></li>
+        <li>golem.de: <a
+            href="https://www.golem.de/news/open-data-portal-macht-verfassungsschutzberichte-durchsuchbar-1911-144768.html">„Portal
+            macht Verfassungsschutzberichte durchsuchbar“</a></li>
+        <li><a href="//codefor.de/blog/Launch-Verfassungsschutzberichte.de.html">Unsere Pressemitteilung zum
+            Launch</a></li>
+      </ul>
+    </div>
+
+    <a id='ueber' class="anchor"></a>
+    <h2 class="mt-5">Hintergrund zum Verfassungsschutzbericht</h2>
+    <p>
+      Der Verfassungsschutz gliedert sich in eine Bundesbehörde (Bundesamt für Verfassungsschutz) und 16 Landesbehörden
+      (z. T. gibt es nur eine Abteilung für Verfassungsschutz in dem Innenministerium).
+      Die 17 Berichte der Verfassungsschutz-Behörden erscheinen in der Regel jährlich.
+      Ziel ist es über verfassungsfeindliche Bestrebungen aufzuklären.
+      Damit folgen die Behörden die Strategie „Verfassungsschutz durch Aufklärung“. Dem Selbstverständnis nach sollen
+      die Verfassungsschutzberichte einen Beitrag zur geistig-politischen Auseinandersetzung mit den verschiedenen
+      Formen des sog. Extremismus leisten.
+      Die <a href="https://de.wikipedia.org/wiki/Verfassungsschutzbericht#Deutschland">Wikipedia</a> liefert weitere
+      Hintergrundinformation und eine geschichtliche Einordnung zu den Berichten.
+      <br><br>
+
+      Der Verfassungsschutz steht regelmäßig aufgrund seiner Arbeit oder seiner Inaktivität in der Kritik.
+      Öfters wird die
+      Abschaffung und Neuorganisation der Behörde gefordert (<a
+        href="https://www.stern.de/politik/deutschland/verfassungschutz---darum-muss-die-behoerde-abgeschafft-werden-8784208.html">wie
+        z. B. im Stern</a>). Beispielsweise hat er bei der Aufklärung über den <a
+        href="https://www.nsu-watch.info/2018/09/systemstabilsierend-und-entschuldigend-rezension-tanjev-schultz-nsu-der-terror-von-rechts-und-das-versagen-des-staates/">NSU
+        versagt</a> oder baute <a href="https://www.der-rechte-rand.de/archive/3421/nsu-aufbauhilfe/">
+        rechte Strukturen in Thüringen mit auf</a>. Im aktuellen Bericht des Verfassungsschutzes Sachsen wird das
+      <a
+        href="https://www.lvz.de/Region/Mitteldeutschland/Saechsischer-Verfassungsschutz-erwaehnt-wirsindmehr-Konzert-als-linksextremistisch">
+        #wirsindmehr-Konzert in Chemnitz als „linksextrem“</a> beschrieben – während <a
+        href="https://www.deutschlandfunknova.de/beitrag/wirsindmehr-konzert-kritik-am-saechsischen-verfassungsschutzbericht">Pegida
+        explizit als „nicht-extremistisch“</a> bezeichnet wird.
+      <br><br>
+      Nachfolgend weitere Quellen für die Auseinandersetzung mit den Verfassungsschutz. Die <a
+        href="https://www.naturfreunde-berlin.de/">Naturfreunde
+        Berlin</a> öffnen mit einer <a href="https://www.blackbox-vs.de/">Kampagne die „Blackbox“</a>. Der
+      Bürgerrechtler Ralf
+      Gössner, der für 38 Jahre rechtswidrig überwacht wurde, fasst seine Kritik in <a
+        href="https://www.youtube.com/watch?v=Hwi2-rf_SPc">einem
+        viertelstündigen Vortrag</a> zusammen und die Netzaktivistin Anne Roth präsentierte auf dem 29C3 die <a
+        href="https://media.ccc.de/v/29c3-5299-de-en-best_of_verfassungsschutz_h264">„Best of Verfassungsschutz“</a>.
+
+      <br><br>
+      Abschließend lässt sich sagen, dass der Verfassungsschutz keine neutrale Instanz ist.
+      Daher sollten die Information aus den Berichten nicht ungeprüft als Wahrheit angenommen werden.
+
+      <a id='talk' class="anchor"></a>
+      <h3 class="mt-5">Unser Talk beim 36C3 (Chaos West)</h3>
+      <p>Andreas Krämer (<a href="https://twitter.com/housetier84">@housetier84</a>) und Johannes Filter (<a
+          href="https://twitter.com/fil_ter">@fil_ter</a>) haben auf dem 36C3 (Jahreskongress des Chaos Computer Clubs)
+        über Verfassungsschutzberichte
+        gesprochen. Es ging vor allem darum, was der Verfassungsschutz über linke Gruppierung (wie z. B. VVN-BDA oder
+        Rote Hilfe) schreibt.<br>Vielen Dank an die Bühne von <a href="https://twitter.com/chaoswildwest">Chaos
+          West</a> für die Möglichkeit über unsere Arbeit zu reden.</p>
+        
+        <a href="https://media.ccc.de/v/36c3-100-broken-beyond-repair-no-patch-for-verfassungsschutz-kritische-analyse-der-verfassungsschutzberichte">
+        <img src="/static/talkpreview.jpg" style="width: 100%;" >
+        </a>
+        <p>Auf <a href="https://media.ccc.de/v/36c3-100-broken-beyond-repair-no-patch-for-verfassungsschutz-kritische-analyse-der-verfassungsschutzberichte">media.ccc.de</a> oder <a href="https://www.youtube.com/watch?v=SR1fM-wGMAI">YouTube</a> ansehen.</p>
+
+        <br>
+        <small>Bei Minute 19 gab es aus dem Publikum eine lautstarke Kritik an einer Grafik. Die Kritik stellte sich im
+          Nachgang als
+          haltlos
+          heraus.</small></p>
+
+      <h2 class="mt-5">Das sagen andere über uns</h2>
+
+      <div class='row'>
+        <div class='col-md-2 mb-3 m-md-3 text-center'>
+          <figure class="figure mt-5 mt-md-0">
+            <img class="figure-img" src="/static/avatars/kn.jpg" style="width: 128px" alt="Katharina Nocun" />
+            <figcaption class="figure-caption text-md-left"><small>© <a
+                  href="https://creativecommons.org/licenses/by/4.0/">CC
+                  BY</a> <a href="https://www.gordonwelters.com/">Gordon Welters</a></small></figcaption>
+          </figure>
+        </div>
+        <div class='col'>
+          <blockquote class="blockquote">
+            <p class="mb-0">„Die Verfassungsschutzberichte der letzten Jahrzehnte belegen
+              eindrucksvoll eine fehlende Prioritätensetzung im Bereich
+              Rechtsextremismus. Wer Umweltbewegungen beobachten lässt, statt
+              Rechtsterroristen ins Visier zu nehmen, hat ein grundlegend falsches
+              Verständnis von dem, was unsere demokratische und freiheitliche
+              Gesellschaft tatsächlich bedroht. Diese Plattform leistet einen wichtigen
+              Beitrag für die kritische Auseinandersetzung mit der Arbeit des
+              Verfassungsschutzes.”</p>
+            <footer class="blockquote-footer" style="margin-top: 0">
+              <a href="https://kattascha.de/%3Fpage_id%3D393">Katharina Nocun</a>, Bürgerrechtlerin und Netzaktivistin
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-2 mb-3 m-md-3 text-center'> <img src="/static/avatars/ln.jpg" alt="Linus Neumann" />
+        </div>
+        <div class='col'>
+          <blockquote class="blockquote">
+            <p class="mb-0">„Die Bundes- und Landesämter für Verfassungsschutz sind wohl die intransparentesten Behörden
+              der
+              BRD – und regelmäßig Kern schwerster Skandale. Ihre Berichte sind das kleine bisschen Transparenz, das der
+              Öffentlichkeit zugestanden wird. Jetzt wird es erstmalig möglich, sie gezielt längsschnittlich zu
+              analysieren.
+              Frei, offen, unverfälscht und für alle zugänglich.”</p>
+            <footer class="blockquote-footer" style="margin-top: 0">
+              <a href="https://linus-neumann.de/">Linus Neumann</a>, Hacker und ein Sprecher des Chaos Computer
+              Club</footer>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-2 mb-3 m-md-3 text-center'> <img src="/static/avatars/as.jpg" style="width: 128px"
+            alt="Arne Semsrott" />
+        </div>
+        <div class='col'>
+          <blockquote class="blockquote">
+            <p class="mb-0">„Eine Supersache, dass die Berichte des sog. Verfassungsschutzes jetzt öffentlich zugänglich
+              sind. Der Geheimdienst hat bei dem Versagen rund um die Aufklärung des NSU gezeigt, dass er von
+              Transparenz
+              nichts hält. Die Aktenvernichtung und die Verharmlosung der rechten Gewalt sind einer Demokratie unwürdig.
+              Die Zivilgesellschaft muss weiter Druck aufbauen, um deutsche Geheimdienste besser zu kontrollieren.”</p>
+            <footer class="blockquote-footer" style="margin-top: 0"><a
+                href="https://de.wikipedia.org/wiki/Arne_Semsrott">Arne Semsrott</a>, Aktivist und Projektleiter bei
+              FragDenStaat</footer>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-2 mb-3 m-md-3 text-center'> <img src="/static/avatars/mw.jpg" style="width: 128px"
+            alt="Michèle Winkler" />
+        </div>
+        <div class='col'>
+          <blockquote class="blockquote">
+            <p class="mb-0">„Dem Auftrag, 'die Verfassung zu schützen', werden die
+              Verfassungsschutzämter nicht gerecht. Allein am Beispiel des NSU-Terrors
+              wird das deutlich: Die im NSU-Umfeld platzierten V-Leute haben über
+              Jahre die extrem rechte Szene finanziert und damit gestärkt. Es wurde
+              nicht ein NSU-Mord verhindert – im Gegenteil: im Nachgang wurden
+              systematisch Akten vernichtet, die Aufklärung torpediert und die
+              eventuelle Beteiligung des V-Mann-Führers Temme verschleiert. Aus
+              radikal demokratischer Sicht dürfte es grundsätzlich keine
+              Inlandsgeheimdienste geben. Auf dem Weg dahin muss diesen Behörden und
+              ihrer an Eigeninteressen ausgerichteten und politisch motivierten
+              Außendarstellung kritisch begegnet werden. Dies wird durch diese
+              Webseite nun einfacher. Vielen Dank dafür.”</p>
+            <footer class="blockquote-footer" style="margin-top: 0"><a
+                href="http://www.grundrechtekomitee.de/node/20">Michèle Winkler</a>, Referentin
+              beim Komitee für Grundrechte und Demokratie</footer>
+          </blockquote>
+        </div>
+      </div>
+
+      <img src=" /static/samuel.jpg" class="img-fluid rounded" alt="Responsive image">
+
+      <a id='faq' class="anchor"></a>
+      <h2 class="mt-5">Fragen und Antworten</h2>
+
+      <h4 class="mt-4">Woher kommen die Dokumente?</h4>
+
+      <p>Die Verfassungsschutzberichte werden von den Ämtern auf ihrer Webseite veröffentlicht. Leider werden ältere
+        Berichte meistens depubliziert, jedoch schwirren viele Kopien noch im Netz. Alle Verfassungsschutzberichte sind
+        in
+        Bibliotheken vorhanden und können theoretisch eingescannt werden. Falls dir ein fehlender Bericht vorliegt, <a
+          href='/#kontakt'>kontaktiere</a> uns bitte.</p>
+
+
+      <h4 class="mt-4">Warum nimmt der Verfassungsschutz die alten Berichte aus dem Netz?</h4>
+      <p>Einige Behörden, wie z. B. der <a
+          href="https://verfassungsschutz.brandenburg.de/cms/detail.php/lbm1.c.337054.de">Verfassungsschutz
+          Brandenburg</a>, lassen ihre Berichte online. Die meisten anderen Ämter nehmen die Berichte nach ein paar
+        Jahren offline. Das
+        Bundesamt für Verfassungsschutz behauptet, dass sie aus <a
+          href='/static/bfvs_datenschutz.jpg'>Datenschutzgründen
+          nur Berichte der letzten fünf Jahren vorhalten</a>. Online sind dennoch alle seine Berichte bis 1999 zu
+        finden.
+        Auf über 300 Berichte sind wir nur per Recherche via <a href="https://archive.org/web/">archive.org</a> gestoßen
+        (<a
+          href="https://web.archive.org/web/20090307123734/http://www.verfassungsschutz.bayern.de/service/berichte/">z.
+          B. Berichte aus Bayern</a>).
+      </p>
+
+      <h4 class="mt-4">Können jetzt Personen und Organisation, die in Berichten erwähnt werden, über die z. B. die
+        Google-Suche gefunden werden?</h4>
+      <p>Nein, Suchmaschinen ist es auf dieser Webseite <a
+          href="https://de.wikipedia.org/wiki/Robots_Exclusion_Standard">untersagt</a> den Text aus den Berichten in
+        ihre
+        Suchergebnisse aufzunehmen. Die Berichte
+        sind
+        keine verlässliche Informationsquelle und daher sollten die Erwähnungen nicht aus dem Kontext gerissen werden.
+      </p>
+
+      <h4 class="mt-4">Wie wurden die Dokumente bearbeitet?</h4>
+
+      <p>Die neueren Berichte liegen als textbasiertes PDF vor. Das bedeutet, dass es einfach ist den Text zu
+        extrahieren.
+        Ältere und auch eingescannte Berichte bestehen nur als Bilder. Um darin suchen zu können muss erst eine <a
+          href="https://de.wikipedia.org/wiki/Texterkennung">Texterkennung</a> durchgeführt werden. Dafür wurden <a
+          href="https://ocrmypdf.readthedocs.io/en/latest/">OCRmyPDF</a> benutzt, das wiederum <a
+          href="https://github.com/tesseract-ocr/tesseract">Tesseract 4.0</a> verwendet. Die Datenqualität ist mal
+        besser
+        und mal schlechter, da es abhängig von vielen Faktoren wie z. B. der Schriftart ist. Einige Dokumente mussten
+        umfangreich manuell bereinigt werden, da z. B. die Reihenfolge der Seiten durch das Scannen fehlerhaft war.</p>
+
+      <!-- some other query stuff is currently not workin -->
+      <a id='suche' class="anchor"></a>
+      <h4 class="mt-4">Welche Suchoperationen werden unterstützt?</h4>
+      <p>Generell operiert die Suche auf einzelnen PDF-Seiten. Wenn mehrere Wörter in der Abfrage verwendet werden, gibt
+        es mehrere Möglichkeiten komplexere Anfragen zu stellen. Standardmäßig müssen beide
+        Suchbegriffe
+        irgendwo auf der Seite vorkommen. Bei der Suche <i><a href="/suche?q=kommunistische%20partei">Kommunistische
+            Partei</a></i> müssen <i>Kommunistische</i> und <i>Partei</i> auf der gleichen
+        Seite vorkommen. Damit nur Treffern mit genau der Phrase gefunden werden, können Anführungszeichen gesetzt
+        werden.
+        <i><a href='/suche?q="kommunistische%20partei"'>"Kommunistische Partei"</a></i>. Mit <i>or</i> kann man sagen,
+        dass
+        nur einer von beiden Begriffen auftauchen soll, z. B.
+        <i><a href="/suche?q=links%20or%20rechts">links or rechts</a></i>. Zudem lassen sich mit den Klammern <i>(</i>
+        und <i>)</i>
+        Suchanfragen
+        kombinieren: <i><a href="/suche?q=(links%20or%20rechts)
+          kind">(links or rechts)
+            kind</a></i>. Aktuell sind alle Suchanfragen sog. Wildcard Queries. Das bedeutet, dass nur der Anfang eines
+        Wortes zum Suchbegriff übereinstimmen muss, um als Treffer erkannt zu werden.
+      </p>
+
+      <a id='relative' class="anchor"></a>
+      <h4 class="mt-4">Wie wird die relative Häufigkeit für die einzelnen Wörter
+        errechnet?</h4>
+
+      <p>Im ersten Schritt werden die absoluten Erwähnungen pro Jahr errechnet. Dazu wird eine Suche ausgeführt und
+        dann pro gefundener Seite die Vorkommen summiert. Dabei werden nur exakte Treffer der Begriffe berücksichtigt.
+        Die
+        Suche findet teilweise auch Resultate, bei denen Wörter nur teilweise übereinstimmen. Diese werden bei den
+        Trends
+        nicht gezählt, um die Rate der <a
+          href="https://de.wikipedia.org/wiki/Beurteilung_eines_bin%C3%A4ren_Klassifikators#Wahrheitsmatrix:_Richtige_und_falsche_Klassifikationen">falsch
+          Positiven</a> zu verringern.
+        <br><br>
+        Im zweiten Schritt werden die Häufigkeiten relativiert, da die absolute Anzahl an Wörtern pro Jahr schwankt
+        (da
+        z. B. noch
+        nicht für alle Jahre Berichte vorhanden sind). Dazu werden die absoluten Werte
+        durch die Anzahl aller Wörter in einem Jahr dividiert.</p>
+
+      <h4>Wie aussagekräftig sind die Verfassungsschutz-Trends?</h4>
+      <p>Wie jede quantitative Auswertung ersetzt sie keine qualitative Analyse, um Schlussfolgerungen zu ziehen. So
+        wird
+        zum
+        Beispiel <a href="/suche?min_year=2018&max_year=2018&jurisdiction=bund&q=afd">die
+          AfD im Bundes-Bericht 2018</a> nur als Opfer von Gewalt gelistet. Das Verfahren ist lediglich ein
+        Einstiegspunkt
+        für
+        tiefergehendere
+        Betrachtungen.
+        <br><br>
+        Zudem schwanken die
+        Resultate je nach Begriff. So liefert eine Suche nach "AfD"
+        auch Treffer für die Organisation "AFDP". Hier sind die Grenzen des Verfahrens erreicht, daher sollten man
+        die Ergebnisse auf Plausibilität überprüfen.
+        Theoretisch ist es möglich diese Verwechslung zu umgehen, indem man versucht <a
+          href="https://en.wikipedia.org/wiki/Named-entity_recognition">Eigennamen zu erkennen</a>. Dazu ist die
+        Texterkennung bei alten Dokumenten noch zu schlecht.
+      </p>
+
+      <!-- <a id='scannen' class="anchor"></a>
+    <h4 class="mt-4">Ich will ein Bericht einscannen. Was genau muss ich beachten?</h4>
+    <p>Super, dass du mitmachst! Der Bericht sollte am Ende im A5-Hochformat sein. Oft gibt es Berichte nur als Buch.
+      Dann am besten jeweils zwei Seiten als Doppelseite einscannen. Wir bringen das PDF in das richtige
+      Format. 300 DPI reichen, das Wichtigste ist, dass die Schrift zu lesen ist. Wenn Seiten schief sind, ist dies kein
+      Problem. Starke Krümmungen
+      sollten so weit wie möglich vermieden werden. Bitte nimm mit uns <a href="#kontakt">Kontakt</a> auf, bevor du
+      anfängst, um doppelte Arbeit zu vermeiden.
+      <br><br>
+      Wenn der Bericht nicht mehr gebraucht wird, kannst du ihn uns auch zusenden. Wir werden den Bericht beim
+      digitalisieren zerschneiden und daher nicht zurücksenden.<br><br>
+
+      VS-Berichte.de<br>
+      c/o Open Knowledge Foundation Deutschland e.V.<br>
+      Singerstr. 109<br>10179 Berlin
+    </p> -->
+
+      <h4 class="mt-4">Ist die Domain nicht zu lang?</h4>
+      <p>Es gibt eine Weiterleitung von <a href="https://vsberichte.de">vsberichte.de</a> und <a
+          href="https://vs-berichte.de">vs-berichte.de</a>. 😉</p>
+
+      <h4 class="mt-4">Habt ihr eine Onion-Service-Adresse?</h4>
+      <p>
+          Ja, dazu ist aber der <a href="https://www.torproject.org/de/">Tor Browser</a> notwendig: <pre>zq5xve7vxljrsccptc4wxmuebnuiglhylahfwahyw7dzlxc43em4w6yd.onion</pre>
+        </p>
+
+      <a id='daten' class="anchor"></a>
+      <h2 class="mt-5">Daten</h2>
+
+      <p>
+        Die <a href="https://data.jfilter.de/vsberichte.zip">PDFs</a> (>6GB) und die <a
+          href="https://data.jfilter.de/vsberichte-texts.zip">Text-Dateien</a> der Berichte gibt es jeweils gebündelt
+        als
+        ZIP-File
+        und es steht eine minimalistische JSON-API bereit (<a href="/api">Übersicht</a>, <a
+          href="/api/bund/2018">Einzelansicht</a>).
+      </p>
+
+      <a id='kontakt' class="anchor"></a>
+      <h2 class="mt-5">Kontakt</h2>
+
+      <p>
+        Für Fragen und Anregungen bitte in unseren <a href='https://matrix.to/#/!yzcGKjZhTbIBNruKyH:matrix.org?via=matrix.org'>Chat kommen</a> oder (verschlüsselt) eine E-Mail an <a style="white-space: nowrap;"
+          href="mailto:vsberichte@protonmail.com">vsberichte@protonmail.com</a>
+        senden (<a
+          href="https://keys.openpgp.org/vks/v1/by-fingerprint/F623C4C5FD140008D7E8234CD52D69A052BB669F">.asc</a>).<br><small>Fingerprint:
+          <code>F623 C4C5 FD14 0008 D7E8  234C D52D 69A0 52BB 669F</code></small><br><br>
+        Der Code befindet sich auf <a href="https://github.com/codeforberlin/verfassungsschutzberichte.de">GitHub</a>
+        und
+        Neuigkeiten gibt es hier:<br><br>👉 Twitter: <a href="https://twitter.com/vsberichte"><img alt="twitter"
+            height=20 width=20 src=" /static/twitter.svg">@vsberichte</a>
+        <br><br>👉 Instagram: <a href="https://instagram.com/vsberichte">vsberichte</a>
+        <br><br>👉 <a href="#newsletter">Newsletter</a>
+        <br><br>
+        Ehrenamtlich konzipiert und umgesetzt von <a href="https://johannesfilter.com">Johannes Filter</a> aus dem <a
+          href="https://www.meetup.com/OK-Lab-Berlin/">Open
+          Knowledge Lab
+          Berlin</a> von <a href="https://www.codefor.de/">Code for Germany</a>, einem Projekt der <a
+          href="https://okfn.de/">Open Knowledge Foundation Deutschland</a>.
+        <br><br>
+      </p>
+
+      <div class='row justify-content-center align-items-center'>
+        <div class='col text-center'><a href="https://www.meetup.com/OK-Lab-Berlin/"><img style="width: 50%"
+              src='/static/logos/oklabberlin.jpg' alt="ok lab berlin" /></a></div>
+        <div class='col text-center'><a href="https://codefor.de"><img style="width: 100%" src='/static/logos/CFG_logo.svg'
+              alt="cfg" /></a></div>
+        <div class='col text-center'><a href="https://okfn.de"><img style="width: 100%" src='/static/logos/okf.svg'
+              alt="OKF" /></a></div>
+      </div>
+
+      <h2 class="mt-5">Code for Germany</h2>
+
+      <p>
+        Diese Webseite ist im Rahmen von <a href="https://www.codefor.de/">Code for Germany</a> entstanden.
+        Code for Germany fördert Entwicklungen im Bereich Transparenz, <a
+          href="https://de.wikipedia.org/wiki/Open_Data">Open Data</a> und <a
+          href="https://de.wikipedia.org/wiki/Civic_Technology">Civic Tech</a> in Deutschland und setzt
+        Impulse damit die Möglichkeiten der offenen und freien Digitalisierung so vielen Menschen wie möglich zugute
+        kommen.
+        <br><br>
+        Code for Germany organisiert sich in lokalen Gruppen, den Open Knowledge Labs, und ist in 26 deutschen
+        Städten aktiv.
+        Dort treffen sich Designer:innen, Entwickler:innen, Journalist:innen und anderen, um an nützlichen Anwendungen
+        rund um offene Daten und Transparenz zu arbeiten. Sie entwickeln
+        Apps, die informieren, die Gesellschaft positiv gestalten und die Arbeit von Verwaltungen und Behörden
+        transparenter machen. Sie vermitteln insbesondere zwischen Zivilgesellschaft, Verwaltung und Politik und nutzen
+        ihre Fähigkeiten um die Kommunikation zwischen diesen zu verbessern.
+      </p>
+
+
+      <a id='Partner' class="anchor"></a>
+      <h2 class="mt-5">Partner:innen</h2>
+
+      <div class='row justify-content-center align-items-center'>
+        <div class='col-4 text-center'><a href="https://www.apabiz.de"><img alt="apabiz"
+              style="width: 80%" src='/static/logos/apabiz.svg' /></a></div>
+        <div class='col-4 text-center'><a href="http://www.humanistische-union.de/"><img alt="humanistische-union"
+              style="width: 40%" src='/static/logos/hu.jpg' /></a></div>
+        <div class='col-4 text-center'><a href="https://blackbox-vs.de"><img alt="Blackbox VS" style="width: 70%"
+              src='/static/logos/blackbox.jpg' /></a></div>
+        <div class='col-4 text-center  mt-5'><a href="https://fragdenstaat.de"><img alt="fragdenstaat" style="width: 50%"
+              src='/static/logos/frag_den_staat_logo.svg' /></a></div>
+        <div class='col-4 text-center mt-5'><a href="https://kleineanfragen.de"><img alt="kleineanfragen"
+              style="width: 70%" src='/static/logos/ka.svg' /></a></div>
+        <div class='col-4 text-center mt-5'><a href="https://offenegesetze.de"><img alt="Offene Gesetze"
+              style="width: 50%" src='/static/logos/og.jpg' /></a></div>
+      </div>
+
+      <a id='Danke' class="anchor"></a>
+      <h2 class="mt-5">Danksagungen</h2>
+      <p>
+        Vielen Dank an das <a href="https://www.apabiz.de/">Antifaschistische Pressearchiv und Bildungszentrum Berlin e. V. (apabiz) </a> für die Bereitstellung hunderter Berichte.
+        <br/><br/>
+        Ein großen Dank an alle Personen, die mitgeholfen haben die Berichte zu sammeln, das <a
+          href="https://archive.org/">Internet
+          Archive</a> und die Open-Source-Community.
+      </p>
+
+  </div>
+</div>
+
+      <div class="push"></div>
+    </div>
+
+    <hr />
+    <footer class="my-5">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="/#faq">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#daten">Daten</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#kontakt">Kontakt</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/impressum">Impressum</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://okfn.de/impressum/#datenschutzerkl%C3%A4rung"
+            >Datenschutz</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/vsberichte"
+            ><img
+              height="20"
+              width="20"
+              src="/static/twitter.svg"
+            />@vsberichte</a
+          >
+        </li>
+      </ul>
+      <div
+        style="padding: 0.5rem; margin: 3rem auto; max-width: 30rem"
+        class="small"
+      >
+        <form
+          method="post"
+          action="https://vsberichte.de"
+          class="listmonk-form"
+        >
+          <div>
+            <h5 id="newsletter">Newsletter</h5>
+            <input type="hidden" name="nonce" />
+
+            <p>
+              <input
+                hidden
+                id="4539a"
+                type="checkbox"
+                name="l"
+                checked
+                value="4539a1e9-ea50-4a91-bd6e-6730ea3eedd0"
+              />
+              <span
+                >Maximal einmal pro Monate informieren wir über Neuigkeiten bei
+                Verfassungsschutzberichte.de, wie neue Analysen oder neue
+                Berichte.</span
+              >
+            </p>
+
+            <p>
+              <input type="email" name="email" required placeholder="E-Mail" />
+            </p>
+
+            <p>
+              <input type="submit" value="Abonnieren" class="btn btn-primary" />
+            </p>
+          </div>
+        </form>
+      </div>
+      <div style="padding-top: 54px"></div>
+    </footer>
+
+    <script>
+      document.querySelector(".listmonk-form").action =
+        "https://listen.daten.cool/subscription/form";
+    </script>
+
+    <!-- Matomo -->
+    <script>
+      var _paq = (window._paq = window._paq || []);
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "https://matomo.daten.cool/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "3"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <noscript
+      ><p>
+        <img
+          src="https://matomo.daten.cool/matomo.php?idsite=3&amp;rec=1"
+          style="border: 0"
+          alt=""
+        /></p
+    ></noscript>
+    <!-- End Matomo Code -->
+  </body>
+</html>

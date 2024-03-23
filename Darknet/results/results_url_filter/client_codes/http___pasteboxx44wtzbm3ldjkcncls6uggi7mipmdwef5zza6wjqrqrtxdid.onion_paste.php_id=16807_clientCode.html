@@ -1,0 +1,399 @@
+<html lang="en"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>-DW.ADVANCED.MARKET- - PasteBox</title>
+    <meta name="description" content="PasteBox is a public paste platform where people can share or store information.">
+    <meta name="keywords" content="PasteBox, paste, public paste">
+	<link rel="shortcut icon" href="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/theme/clean/img/favicon.ico">
+    <link href="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/theme/clean/css/paste.css" rel="stylesheet" type="text/css">
+<style></style>
+  </head>
+
+<body>
+  <div id="top" class="clearfix">
+    <!-- Start App Logo -->
+    <div class="applogo">
+      <a href="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion" class="logo">PasteBox</a>
+    </div>
+    <!-- End App Logo -->
+
+	<!-- Not yet implemented
+    <form class="searchform">
+      <input type="text" class="searchbox" id="searchbox" placeholder="Search">
+      <span class="searchbutton"><i class="fa fa-search"></i></span>
+    </form>
+	//-->
+
+    <!-- Start Top Menu -->
+    <ul class="topmenu">
+	<li><a href="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/archive.php">View Older Pastes</a></li>    </ul>
+    <!-- End Top Menu -->
+
+    <!-- Start Top Right -->
+    <ul class="top-right">
+
+    <li class="dropdown link">
+		<a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><b>Guest</b><span class="caret"></span></a>        <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
+		          <li><a data-target="#signin" data-toggle="modal" href="#">Login</a></li>
+          <li><a data-target="#signup" data-toggle="modal" href="#">Register</a></li>
+		  		</ul>
+    </li>
+
+    </ul>
+    <!-- End Top Right -->
+
+  </div>
+  <!-- END TOP -->
+
+
+  <!-- Sign in -->
+	<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+			<h4 class="modal-title">Login</h4>
+		  </div>
+		  <div class="modal-body">
+			<form method="POST" action="login.php?login">
+				  <div class="input-group">
+				    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+					<input type="text" name="username" class="form-control" placeholder="Username">
+				  </div><br>
+				  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-key"></i></div>
+					<input type="password" name="password" class="form-control" placeholder="Password">
+				  </div>
+          <!-- Captcha -->
+          <div class="form-group pull-left captcha">
+            <div class="col-md-12 col-lg-3">
+              <div class="control-group">
+                <div class="controls">
+                 <div class="input-prepend input-group">
+                 <span class="add-on"><img src="" alt="CAPTCHA" class="imagever"></span>
+                 <input style="height: 35px;" type="text" class="form-control" name="scode" value="" placeholder="Enter Captcha">
+                 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+					<div class="checkbox checkbox-primary">
+						<input id="rememberme" name="rememberme" type="checkbox" checked="">
+						<label for="rememberme">
+							Keep me signed in.						</label>
+					</div>
+				  <button type="submit" class="btn btn-default btn-block">Login</button>
+				  <input type="hidden" name="signin" value="e80ca66b35d34f015a5e94b61f39af88">
+			</form>
+			<br>
+			<!-- Oauth -->
+					<!-- // -->
+			  <!--
+			  <div class="footer-links row">
+			  </div>
+			  -->
+		  </div>
+		  <div class="modal-footer">
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+
+
+<!-- Sign up -->
+	<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+			<h4 class="modal-title">Register</h4>
+		  </div>
+		  <div class="modal-body">
+			  <form method="POST" action="login.php?register">
+				<div class="form-area">
+				  <div class="input-group">
+                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
+					<input type="text" name="username" class="form-control" placeholder="Username">
+				  </div>
+				  <br>
+				  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-user-plus"></i></div>
+					<input type="text" name="full" class="form-control" placeholder="Your Name">
+				  </div>
+				  <br>
+				  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+					<input type="text" name="email" class="form-control" placeholder="Email">
+				  </div>
+				  <br>
+				  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-key"></i></div>
+					<input type="password" name="password" class="form-control" placeholder="Password">
+				  </div>
+				  <br>
+          <!-- Captcha -->
+          <div class="form-group pull-left captcha">
+            <div class="col-md-12 col-lg-3">
+              <div class="control-group">
+                <div class="controls">
+                 <div class="input-prepend input-group">
+                 <span class="add-on"><img src="" alt="CAPTCHA" class="imagever"></span>
+                 <input style="height: 35px;" type="text" class="form-control" name="scode" value="" placeholder="Enter Captcha">
+                 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+				  <button type="submit" class="btn btn-default btn-block">Register</button>
+				</div>
+					 <input type="hidden" name="signup" value="e80ca66b35d34f015a5e94b61f39af88">
+			  </form>
+			<br>
+			<!-- Oauth -->
+					<!-- // -->
+			  <!--
+			  <div class="footer-links row">
+			  </div>
+			  -->
+		  </div>
+		  <div class="modal-footer">
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+
+
+
+
+
+<div class="content">
+	<!-- START CONTAINER -->
+	<div class="container-padding">
+		<!-- Start Row -->
+		<div class="row">
+			<!-- Start Panel -->
+			<div class="col-md-9 col-lg-10">
+				<div class="panel panel-default">
+					<div class="panel-title">
+					  <span class="badge"><i class="fa fa-code fa-lg" aria-hidden="true"></i> </span>
+					  <span class="badge"><i class="fa fa-eye fa-lg" aria-hidden="true"></i> 312</span>
+						<h6 style="text-align: center;">-DW.ADVANCED.MARKET-							<small>
+							Guest							on 6th June 2022 04:02:34 AM							</small>
+						</h6>
+					  <ul class="panel-tools">
+												    <li><a class="icon" href="javascript:togglev();"><i class="fa fa-list-ol fa-lg" title="Toggle Line Numbers"></i></a></li>
+													<li><a class="icon" href="#" onmouseover="selectText('paste');"><i class="fa fa-clipboard fa-lg" title="Select Text"></i></a></li>
+						<li><a class="icon embed-tool"><i class="fa fa-file-code-o fa-lg" title="Embed This Paste"></i></a></li>
+						<!-- <li><a class="icon search-tool"><i class="fa fa-search fa-lg" title="Search"></i></a></li> -->
+						<li><a class="icon expand-tool"><i class="fa fa-expand fa-lg" title="Full Screen"></i></a></li>
+					  </ul>
+					</div>
+
+					<div class="panel-embed col-xs-3" style="display:none; float:right;">
+						<input type="text" class="form-control" value="<script src=&quot;http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?embed&amp;id=16807&quot;></script>" readonly="">
+					</div>
+                    <div class="clear" style="clear:both;"></div>
+
+					<!--
+					<div class="panel-search" style="display: none;">
+					  <form>
+						<input type="text" class="form-control" placeholder="Search this paste">
+						<i class="fa fa-search icon"></i>
+					  </form>
+					</div>
+                    -->
+
+					<div class="panel-body" style="display: block;">
+                        <div id="paste"><div class=""><ol><li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp;Courier Market &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp;THE MOST ADVANCED BLACK MARKET</div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">http://courier2w2hawxspntosy3wolvc7g7tcrwhitiu4irrupnpqub2bqxid.onion/signup/BONUSS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div></li>
+<li class="li2"><div class="de2">This is the most modern dark market in Tor network. &nbsp; &nbsp; &nbsp; &nbsp;</div></li>
+<li class="li1"><div class="de1">Here you can sell and buy drugs, weapons, poisons, &nbsp; &nbsp; </div></li>
+<li class="li2"><div class="de2">explosives, fake money and documents, sell a person </div></li>
+<li class="li1"><div class="de1">(adult) or his organs, order arson, beating or murder. </div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div></li>
+<li class="li1"><div class="de1">Our market is free and gives to everyone a chance to get &nbsp; &nbsp;</div></li>
+<li class="li2"><div class="de2">oodles of money starting from complete zero! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div></li>
+<li class="li2"><div class="de2">Courier Market Also gives to each buyer-referral 100% of market &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></li>
+<li class="li1"><div class="de1">fee for each fifth (5) Purchase !!!</div></li>
+</ol></div></div>					</div>
+				</div>
+			</div>
+
+			<!-- End Panel -->
+			
+    <div class="col-md-3 col-lg-2">
+
+	<!-- Guest message -->
+			<div class="widget guestmsg" style="background:#1E2933;">
+			<p class="text">PasteBox is a public paste platform.</p>
+			<p class="text-body"><a data-target="#signin" data-toggle="modal" href="#">Login</a> or <a data-target="#signup" data-toggle="modal" href="#">Register</a> to edit, delete and keep track of your pastes and more.</p>
+			</div>
+    <!-- End message -->
+		<!-- Recent Public Pastes -->
+		<div class="panel panel-default">
+		  <div class="panel-title"><u><a href="/archive.php" style="color: red">Recent Pastes</a></u></div>
+			<div class="panel-body">
+				<div class="list-widget pagination-content">
+					
+					<p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83028" title="Free Child Porno">Free Child Porno</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:31" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+					
+					</p><p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83027" title="HQ Child Porno">HQ Child Porno</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:29" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+					
+					</p><p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83026" title="Amateur CP FROM[...]">Amateur CP FROM[...]</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:29" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+					
+					</p><p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83025" title="Loli CP Teens[...]">Loli CP Teens[...]</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:29" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+					
+					</p><p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83024" title="Rare Child Porno[...]">Rare Child Porno[...]</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:28" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+					
+					</p><p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83023" title="Young❤️CP[...]">Young❤️CP[...]</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:28" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+					
+					</p><p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83022" title="CP Amateur Loli">CP Amateur Loli</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:28" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+					
+					</p><p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83021" title="Child Teen Porno[...]">Child Teen Porno[...]</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:28" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+					
+					</p><p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83020" title="CP Loli Premium">CP Loli Premium</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:28" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+					
+					</p><p class="no-margin">
+					<a href="http://pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/paste.php?id=83019" title="CP❤️Videos[...]">CP❤️Videos[...]</a>						<button type="button" class="btn-light pull-right" data-container="body" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="12/2/2023 11:18:28" data-original-title="" title="">
+						 <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+						</button>
+										</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Panel -->
+
+		<div style="text-align:center;">
+		</div>
+						</div>
+
+		<!-- FOR COMMENTS SECTION -->
+		<div class="row">
+			<div class="col-md-9 col-lg-10"> 
+				<form method="POST" action="">
+					
+					<input type="hidden" name="uid" value="Anonymous">
+					<input type="hidden" name="date" value="2023-12-02 12:39:52">
+					<textarea name="message" placeholder="Add a comment here"></textarea><br> 
+					<button style="background-color:#AEB6BF; float: right; top:2px" type="submit" name="commentSubmit">Comment</button>
+					</form><br>			</div>
+		</div>	
+
+		<div class="row">
+			<div class="col-md-9 col-lg-10">
+							</div>	
+		</div>
+		
+
+				
+		
+
+
+		<div class="row">
+			<!-- Guests -->
+						<div class="col-md-12 col-lg-12">
+				<div class="panel panel-default" style="padding-bottom: 100px;">
+					<div class="panel-title">
+						Raw Paste					</div>
+					<div class="panel-body">
+						<!-- Raw data -->
+						<div class="form-group">
+							<div class="col-md-12">
+							  <textarea class="form-control" rows="15" id="code" name="paste_data" onkeydown="return catchTab(this,event)" placeholder="helloworld">Courier Market                                                         
+
+ THE MOST ADVANCED BLACK MARKET
+
+http://courier2w2hawxspntosy3wolvc7g7tcrwhitiu4irrupnpqub2bqxid.onion/signup/BONUSS                                                                
+                                          
+This is the most modern dark market in Tor network.        
+Here you can sell and buy drugs, weapons, poisons,     
+explosives, fake money and documents, sell a person 
+(adult) or his organs, order arson, beating or murder. 
+              
+Our market is free and gives to everyone a chance to get    
+oodles of money starting from complete zero!                                                                 
+                                                            
+Courier Market Also gives to each buyer-referral 100% of market                                                            
+fee for each fifth (5) Purchase !!!</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="error-pages">
+						<p><a class="btn btn-default" data-target="#signin" data-toggle="modal" href="#">Login</a> or <a class="btn btn-default" data-target="#signup" data-toggle="modal" href="#">Register</a>. It's free.</p>
+					</div>
+				</div>
+			</div>
+			
+</div>
+<!-- END CONTAINER -->
+
+<!-- Start Footer -->
+<div class="row footer">
+  <div class="col-md-6 text-left"><a href="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/faqs.php">FAQS</a><br>  Copyright © 2023 <a href="" target="_blank">PasteBox</a>. All rights reserved.
+  </div>
+</div>
+<div style="text-align:center;">
+</div>
+<!-- End Footer -->
+
+</div>
+<!-- End content -->
+
+<!-- Additional Scripts -->
+
+<!-- Scripts -->
+<script type="text/javascript" src="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/theme/clean/js/jquery.min.js"></script>
+<script type="text/javascript" src="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/theme/clean/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/theme/clean/js/paste.js"></script>
+<script type="text/javascript" src="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/theme/clean/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/theme/clean/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//pasteboxx44wtzbm3ldjkcncls6uggi7mipmdwef5zza6wjqrqrtxdid.onion/theme/clean/js/datatables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+	 //$('#archive').DataTable();
+     $('#archive').DataTable( {
+        "order": [[ 1, "desc" ]] // Paste Time
+    } );
+} );
+</script>
+
+
+
+</div></body></html>
